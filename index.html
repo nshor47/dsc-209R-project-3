@@ -6,23 +6,32 @@
     <title>Substance Usage by Age Group</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-      .bar {
-        fill: steelblue;
-      }
-      .bar:hover {
+     .bar {
+    fill: steelblue;
+}
+    .bar:hover {
         fill: orange;
-      }
-      .axis-label {
+    }
+    .axis-label {
         font-size: 12px;
-      }
+    }
+    .legend rect {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+    }
+    .legend text {
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+    }
     </style>
   </head>
   <body>
     <div id="app"></div>
     
     <select id="usage-type-dropdown">
-      <option value="percentage">Yearly Substance Usage Percentage</option>
-      <option value="frequency">Median Yearly Substance Use</option>
+      <option value="percentage">Populations Yearly Substance Usage (%)</option>
+      <option value="frequency">Median # of Yearly Substance Usages</option>
     </select>
 
     <div id="age-selection">
@@ -45,7 +54,25 @@
         <label><input type="checkbox" value="65+"> 65+</label>
     </div>
 
-    <svg width="900" height="600"></svg>
+    <div id="substance-selection">
+        <label><input type="checkbox" value="alcohol_use"> Alcohol</label>
+        <label><input type="checkbox" value="marijuana_use"> Marijuana</label>
+        <label><input type="checkbox" value="cocaine_use"> Cocaine</label>
+        <label><input type="checkbox" value="crack_use"> Crack</label>
+        <label><input type="checkbox" value="heroin_use"> Heroin</label>
+        <label><input type="checkbox" value="hallucinogen_use"> Hallucinogen</label>
+        <label><input type="checkbox" value="inhalant_use"> Inhalant</label>
+        <label><input type="checkbox" value="pain_releiver_use"> Pain Reliever</label>
+        <label><input type="checkbox" value="oxycontin_use"> OxyContin</label>
+        <label><input type="checkbox" value="tranquilizer_use"> Tranquilizer</label>
+        <label><input type="checkbox" value="stimulant_use"> Stimulant</label>
+        <label><input type="checkbox" value="meth_use"> Meth</label>
+        <label><input type="checkbox" value="sedative_use"> Sedative</label>
+    </div>
+
+    <svg width="900" height="900"></svg>
+
+    <div id="tooltip" style="position: absolute; opacity: 0; pointer-events: none; background-color: #f9f9f9; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></div>
 
     <script src="main.js"></script>
   </body>
