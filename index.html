@@ -24,6 +24,89 @@
         font-size: 12px;
         font-family: Arial, sans-serif;
     }
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
+
+    #usage-type-dropdown {
+        margin-top: 20px;
+        padding: 5px;
+    }
+
+    .chart-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    svg {
+        display: block;
+        margin: auto;
+    }
+
+    .tooltip {
+        background-color: white;
+        border: 1px solid black;
+        padding: 5px;
+        font-size: 12px;
+        
+}
+    #controls {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #age-selection, #substance-selection {
+        margin-bottom: 5px;
+    }
+
+    #chart-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 90vh;
+    }
+    #controls-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px; 
+    }
+
+    #controls {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #legend {
+        margin-top: 10px; 
+    }
+    #write-up {
+        width: 100%;
+        text-align: center;
+        bottom: 10px;
+        font-size: 16px;
+        font-weight: normal;
+}
+    #note {
+        text-align: center;
+        font-size: 14px;
+        font-weight: normal;
+    }
     </style>
   </head>
   <body>
@@ -70,10 +153,40 @@
         <label><input type="checkbox" value="sedative_use"> Sedative</label>
     </div>
 
-    <svg width="900" height="900"></svg>
-
+    <div id="chart-container">
+        <svg width="900" height="600"></svg>
+    </div>
+    <p id="note"><b>Note:</b> Please pay close attention to dynamically changing y-axis tick values during your interactive experience.
+    Hover cursor over stacked bar plots for more information on data points.</p>
+    <br>
     <div id="tooltip" style="position: absolute; opacity: 0; pointer-events: none; background-color: #f9f9f9; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></div>
-
+    
+    
+    <div id="write-up">
+        <p>In designing my graph, I selected a simple stacked bar chart as my visual encoding and implemented multiple interaction techniques
+            that let the user explore the data in a more dynamic way. The stacked bar chart allows users to compare substance usage
+            across different age groups, while the checkboxes and dropdown menu enable users to filter the data based on age group, substance,
+            and usage type. This interactivity provides a more engaging experience and allows users to focus on the data that interests them 
+            the most. At times, the stacked bar charts values can be difficult to compare, so I added a tooltip that displays the exact
+            percentage or frequency of substance usage, drug type, and age-group when hovering over each individual bar. This approach lets 
+            users focus on high-level trends while still having access to smaller and more detailed insights.
+            I chose a pre-defined, categorical color scheme set and assigned a color to each age group for easy differentiation.
+            I considered alternative visualizations, such as grouped bar charts or line graphs, but ultimately found the stacked bar 
+            chart most effective for comparing multiple categories across age groups while maintaining a simple, user-friendly experience.
+        </p>
+        
+        <p>I worked on this project alone and it took me around 10-12 hours in total. The project’s most time-consuming 
+            aspect was implementing the interactive elements, specifically the age and substance checkboxes and the dropdown for usage 
+            type since I hadn't designed something like this on my own before. Getting the tooltip to properly work and display the correct
+            information was also a challenge, and took lots of time to tweak and debug. Setting up these elements required very tedious work
+            to ensure they correctly filtered and updated the charts contents based on user selection. Adjusting the y-axis so that it would
+            dynamically update as tick boxes were selected/deselected also took lots of iterative changes and much more time than anticipated.
+            I kept the rest of the graph pretty simple and clean, focusing on the data and interaction elements as the main priority. In the
+            end, this project required a lot of experimentation and small changes but I think I was succesful in creating an informative
+            and dynamic graph with a very user-friendly design.</p>
+        </p>
+        <p>Data Source: <a href="https://github.com/fivethirtyeight/data/blob/master/drug-use-by-age/drug-use-by-age.csv" target = _blank>FiveThirtyEight Drug Use By Age Dataset</a>  | Website by Nicholas Shor</p>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>

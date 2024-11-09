@@ -36,7 +36,7 @@ d3.csv("drug-use-by-age.csv").then(function(data) {
 });
 
 function generateGraph(data, selectedAges, usageType, selectedSubstances) {
-    const margin = { top: 60, right: 100, bottom: 60, left: 60 }; 
+    const margin = { top: 40, right: 100, bottom: 44, left: 60 }; 
     const width = 900 - margin.left - margin.right;
     const height = 600 - margin.top - margin.bottom;
 
@@ -62,6 +62,8 @@ function generateGraph(data, selectedAges, usageType, selectedSubstances) {
             usageType === 'percentage' ? d[`${substance}`] : d[`${substance.replace('_use', '_frequency')}`]
         )
     ) * 7;
+
+    
 
     const xScale = d3.scaleBand()
         .domain(substances)
@@ -108,7 +110,7 @@ function generateGraph(data, selectedAges, usageType, selectedSubstances) {
         .style("font-weight", "bold");
 
     const legend = svg.append("g")
-        .attr("transform", `translate(${width + 60}, 0)`);
+        .attr("transform", `translate(${width + 60}, 20)`);
 
     selectedAges.forEach((age, i) => {
         legend.append("rect")
